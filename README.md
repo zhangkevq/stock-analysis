@@ -1,8 +1,8 @@
 # Stock Analysis
-  This project seeks to demonstrate the effects of efficient coding and show their benefits using VBA. Images will be provided which will show the results of the differences between the original script we ended up with after performing analysis on our data
+  This project seeks to demonstrate the effects of efficient coding and show their benefits using VBA. Images will be provided which will show the results of the differences between the original script we ended up with after performing analysis on the data.
 
 ## Data
-  This project used stock information in two sheets of an Excel file. The data has information on 12 different stocks, including their ticker value, issue dates, opening/closing and adjusted closing price, highest/lowest price, and volume of the stock. The _All Stock Analysis_ function's purpose is to get the ticker, the ticker's total daily volume, and the return-percentage on each stock. The aim of refactoring the code is to reduce the time it takes for the program to perform the task. Instead of a nested for loop, the code was changed to use two separate loops. It cleans up some of the unnecessary processes in the code, making it run more efficiently.
+  This project used stock information in two sheets of an Excel file. The data has information on 12 different stocks, including their ticker value, issue dates, opening/closing and adjusted closing price, highest/lowest price, and volume of the stock. The _All Stock Analysis_ function's purpose is to get the ticker, the ticker's total daily volume, and the return-percentage on each stock. The aim of refactoring the code is to reduce the time it takes for the program to perform the task. Instead of a nested for loop, the code was changed to use one loop. It cleans up some of the unnecessary processes in the code, making it run more efficiently, as well.
 
 ## Refactoring
 The original stocks analysis code can be found here: [Green Stocks](https://github.com/zhangkevq/stock-analysis/blob/main/green_stocks.xlsm)
@@ -141,4 +141,4 @@ End Sub
   Using this new code, we can test the run speed and compare to the above speed. Below are the new runtimes:
 ![2017 refactored](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2017_analysis2.png) ![2018 refactored](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2018_analysis2.png)
 
-As can be seen, there is a significant time save when using this new refurbished program.
+As can be seen, there is a significant time save when using this new refactored program, which is a big advantage. However, this analysis may not always be possible. There maybe times where data is unavailable to pull from the table and the program can get stuck in the refurbished version but not in the original version. This refactored program may also have more problems as the data set becomes larger, so it is best to refactor your code when all the data is available and finite. Continuously updating sheets that keep adding information will likely run into problems.
