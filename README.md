@@ -86,7 +86,7 @@ Sub allAnalysis()
     
 End Sub
 ```
-When running the VBA script, the run-time of the program is recorded.
+When running the VBA script, the run-time of the program is recorded. It takes over a second for each one to complete.
 ![2017 Analysis](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2017_analysis1.png) ![2018 Analysis](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2018_analysis1.png)
 
 The refactored code will have header formatting and color-coding included, and those were also in the original stock analysis code. Below is the refactored analysis code:
