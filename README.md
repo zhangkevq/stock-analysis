@@ -6,6 +6,86 @@
 
 ## Refactoring
 The original stocks analysis code can be found here: [Green Stocks](https://github.com/zhangkevq/stock-analysis/blob/main/green_stocks.xlsm)
+```
+Sub allAnalysis()
+    'format output on All Stocks Analysis worksheet
+    Worksheets("All Stocks Analysis").Activate
+    
+    Dim startTime As Single
+    Dim endTime As Single
+    
+    'prompt user for year
+    yearValue = InputBox("What year would you like to run the analysis on?")
+    'start of timer
+    startTime = Timer
+    
+    'run analysis for ANY year
+    Range("A1").Value = "All Stocks (" + yearValue + ")"
+    
+    'header row
+    Cells(3, 1).Value = "Ticker"
+    Cells(3, 2).Value = "Total Daily Volume"
+    Cells(3, 3).Value = "Return"
+    
+    'initialize array of all tickers
+    Dim tickers(11) As String
+        tickers(0) = "AY"
+        tickers(1) = "CSIQ"
+        tickers(2) = "DQ"
+        tickers(3) = "ENPH"
+        tickers(4) = "FSLR"
+        tickers(5) = "HASI"
+        tickers(6) = "JKS"
+        tickers(7) = "RUN"
+        tickers(8) = "SEDG"
+        tickers(9) = "SPWR"
+        tickers(10) = "TERP"
+        tickers(11) = "VSLR"
+    
+    'initialize variables for starting price and ending price
+    Dim startPrice As Single
+    Dim endPrice As Single
+
+    'activate DATA worksheet
+    Sheets(yearValue).Activate
+    
+    'Get number of rows to loop over
+    RowCount = Cells(Rows.Count, "A").End(xlUp).Row
+    
+    'loop through tickers
+    For i = 0 To 11
+        'a line of code here will run 12 times
+        ticker = tickers(i)
+        totalVolume = 0
+        'loop through rows in data
+        Sheets(yearValue).Activate
+        For j = 2 To RowCount
+            'find total volume for current ticker
+            If Cells(j, 1).Value = ticker Then
+                totalVolume = totalVolume + Cells(j, 8).Value
+            End If
+            'find starting price for current ticker
+            If Cells(j - 1, 1) <> ticker And Cells(j, 1).Value = ticker Then
+                startPrice = Cells(j, 6).Value
+            End If
+            'find ending price for current ticker
+            If Cells(j + 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
+                endPrice = Cells(j, 6).Value
+            End If
+        Next j
+    'output the data for the current ticker
+    Worksheets("All Stocks Analysis").Activate
+    Cells(4 + i, 1).Value = ticker
+    Cells(4 + i, 2).Value = totalVolume
+    Cells(4 + i, 3).Value = endPrice / startPrice - 1
+    Next i
+    
+    'end of timer
+    endTime = Timer
+    MsgBox "This code ran in " & (endTime - startTime) & " seconds for the year " & (yearValue)
+    
+End Sub
+```
 When running the VBA script, the run-time of the program is recorded.
 ![2017 Analysis](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2017_analysis1.png) ![2018 Analysis](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2018_analysis1.png)
 
