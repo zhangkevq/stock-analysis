@@ -86,7 +86,7 @@ Sub allAnalysis()
     
 End Sub
 ```
-When running the VBA script, the run-time of the program is recorded. It takes over a second for each one to complete.
+When running the VBA script, the run-time of the program is recorded. It takes a consistent ~1.68 seconds for both sheets.
 ![2017 Analysis](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2017_analysis1.png) ![2018 Analysis](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2018_analysis1.png)
 
 The refactored code will have header formatting and color-coding included, and those were also in the original stock analysis code. Below is the refactored analysis code:
@@ -218,7 +218,7 @@ End Sub
 
 ### Pros and Cons
 
-  Using this new code, we can test the run speed and compare to the above speed. Below are the new runtimes:
+  Using this new code, we can test the run speed and compare to the above speed. The runtimes between the two sets of data are different now:
 ![2017 refactored](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2017_analysis2.png) ![2018 refactored](https://github.com/zhangkevq/stock-analysis/blob/main/runtime_2018_analysis2.png)
 
-As can be seen, there is a significant time save when using this new refactored program, which is a big advantage. However, this analysis may not always be possible. There maybe times where data is unavailable to pull from the table and the program can get stuck in the refurbished version but not in the original version. This refactored program may also have more problems as the data set becomes larger, so it is best to refactor your code when all the data is available and finite. Continuously updating sheets that keep adding information will likely run into problems.
+As can be seen, there is a significant time save when using this new refactored program, which is a big advantage. However, this analysis may not always be possible. There maybe times where data is unavailable to pull from the table and the program can get stuck in the refactored version but not in the original version. There is also an inconsistency between the run time between 2017 and 2018, which means that in certain situations, there could be a wider run-time variance. For example, with an extremely large data set, it could take longer than the original function for some sheets, and faster for other sheets which will lead to user frustration.
